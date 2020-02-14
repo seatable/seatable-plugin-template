@@ -47,8 +47,8 @@ dtable提供的各种功能基本满足各种行业的大多数需求，因其�
 2. 依据dtable-sdk提供的api获取界面数据
 3. 调用算法，完成相关统计需求
 4. 依据dtable-ui-component提供的UI组件库，显示出用户想要的统计结果
-5. 在plugin-config文件夹中添加icon.png作为插件的图标（可以不提供，采用默认图标）
-6. 在plugin-config文件夹中添加card_image.png作为插件图标的背景图（可以不提供，显示为空）
+5. 在plugin-config文件夹中添加icon.png作为插件的图标（可以不提供，采用默认图标),  icon.png 要求是 128x128 像素
+6. 在plugin-config文件夹中添加card_image.png作为插件图标的背景图（可以不提供，显示为空）card_image.png 要求是 560x240 像素
 7. 在plugin-config文件夹中添加info.json配置文件，完成插件开发
 ```
   "name": '',                   // 插件英文名字，用来向dtable注册使用
@@ -67,4 +67,4 @@ dtable提供的各种功能基本满足各种行业的大多数需求，因其�
 ## 打包上传插件
 1. 执行npm run build-plugin 打包插件
 2. 上传插件
-3. 测试
+3. 测试插件
