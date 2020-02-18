@@ -1,0 +1,13 @@
+.dtable-plugin.plugin-container {
+  width: 954px;
+}
+
+.dtable-plugin.plugin-container .test-plugin-header {
+  font-size: 24px;
+}
+
+.dtable-plugin.plugin-container .test-plugin-content {
+  padding: 16px;
+  max-height: 700px;
+  overflow: auto;
+}
