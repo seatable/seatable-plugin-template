@@ -34,7 +34,7 @@ class App extends React.Component {
       window.app = {};
       await this.dtable.init(window.dtablePluginConfig);
       let res = await this.initPluginRelatedUsers(this.dtable.dtableStore);
-      window.app.collaborators = res.data.users_list;
+      window.app.collaborators = res.data.user_list;
       this.dtable.subscribe('dtable-connect', () => { this.onDTableConnect(); });
       this.dtable.subscribe('remote-data-changed', () => { this.onDTableChanged(); });
       await this.dtable.syncWithServer();
@@ -43,7 +43,7 @@ class App extends React.Component {
       // integrated to dtable app
       this.dtable.initInBrowser(window.app.dtableStore);
       let res = await this.initPluginRelatedUsers(this.dtable.dtableStore);
-      window.app.collaborators = res.data.users_list;
+      window.app.collaborators = res.data.user_list;
       this.dtable.subscribe('remote-data-changed', () => { this.onDTableChanged(); });
       await this.dtable.init(window.dtablePluginConfig);
       this.resetData();
