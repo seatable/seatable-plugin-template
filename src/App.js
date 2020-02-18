@@ -75,7 +75,6 @@ class App extends React.Component {
 
   render() {
     let { isLoading, showDialog } = this.state;
-    console.log(isLoading);
     if (isLoading) {
       return '';
     }
