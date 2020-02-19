@@ -38,7 +38,7 @@ const pluginInfoContent = JSON.parse(getFileContent(pluginInfoFilePath));
 
 const pluginInfoContentExpand = {
   "last_modified": moment().format(),
-  "has_css": (isDirExist && cssFilePath) ? true : false,
+  "has_css": (isDirExist(paths.appBuild + '/static/css') && cssFilePath) ? true : false,
   "has_icon": isFileExist(paths.pluginConfigPath, 'icon.png'),
   "has_card_image": isFileExist(paths.pluginConfigPath, 'card_image.png')
 }
