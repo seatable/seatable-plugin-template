@@ -83,7 +83,7 @@ class App extends React.Component {
     let dtableStore = this.dtable.dtableStore;
     
     return (
-      <Modal isOpen={showDialog} toggle={this.onPluginToggle} contentClassName="dtable-plugin plugin-container" size='lg'>
+      <Modal isOpen={showDialog} toggle={this.onPluginToggle} className="dtable-plugin plugin-container" size="lg">
         <ModalHeader className="test-plugin-header" toggle={this.onPluginToggle}>{'插件'}</ModalHeader>
         <ModalBody className="test-plugin-content">
           <div>{`'dtable-value: '${JSON.stringify(dtableStore.value)}`}</div>

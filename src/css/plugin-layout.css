@@ -1,5 +1,5 @@
 .dtable-plugin.plugin-container {
-  width: 954px;
+  max-width: 954px;
 }
 
 .dtable-plugin.plugin-container .test-plugin-header {
