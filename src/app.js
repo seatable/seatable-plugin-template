@@ -35,16 +35,13 @@ class App extends React.Component {
       await this.dtable.init(window.dtablePluginConfig);
       await this.dtable.syncWithServer();
       this.dtable.subscribe('dtable-connect', () => { this.onDTableConnect(); });
-      this.dtable.subscribe('remote-data-changed', () => { this.onDTableChanged(); });
-      window.app.collaborators = this.dtable.getRelatedUsers();
-      this.resetData();
-    } else {
+    } else { 
       // integrated to dtable app
       this.dtable.initInBrowser(window.app.dtableStore);
-      window.app.collaborators = window.app.state.collaborators;
-      this.dtable.subscribe('remote-data-changed', () => { this.onDTableChanged(); });
-      this.resetData();
     }
+    this.dtable.subscribe('remote-data-changed', () => { this.onDTableChanged(); });
+    window.app.collaborators = this.dtable.getRelatedUsers();
+    this.resetData();
   }
 
   onDTableConnect = () => {
