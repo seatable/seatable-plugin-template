@@ -112,10 +112,11 @@ const config = {
 
 * 运行 npm install 安装插件依赖项
 * 运行 npm run start 运行本地开发环境
-* 此时在界面上显示出dtable表格的value值，及表格中协作人（collaborators）的详细信息（本地开发版本使用 settings 中的配置来获取 dtable 数据。集成版本直接获取当前浏览器中的 dtable 数据）。
-  1. dtable表格的value值 存储在 dtable-sdk提供的dtable接口对象的dtableStore属性中
-  2. collaborators协作人信息 存储在 window.app 对象中
-* 依据需求，使用dtable-sdk提供的接口函数，更新app.js 完成插件功能开发
+* 此时在界面上显示出dtable表格所有子表的value值，及表格中协作人（collaborators）的详细信息（本地开发版本使用 settings 中的配置来获取 dtable 数据。集成版本直接获取当前浏览器中的 dtable 数据）。
+  1. dtable表格的中子表(tables)的相关数据，可以通过dtable 提供的 getTables 接口函数获取
+  2. dtable表格协作人(collaborators)的详细信息，可以通过dtable 提供的 getRelatedUsers 接口函数获取
+   
+* 依据需求，使用dtable-sdk提供的接口函数，更新app.js完成插件功能开发
 
 app.js 代码结构说明
 ```
@@ -141,55 +142,43 @@ class App extends React.Component {
     this.dtable = new DTable();
   }
 
-  // 说明1: 初始化 dtable-sdk 插件的接口对象 DTable 数据，初始化 window.app 对象中的 collaborators
+  // 说明: 初始化 dtable-sdk 插件的接口对象 DTable 数据
   componentDidMount() {
     this.initPluginDTableData();  
   }
 
-  // 说明2: 集成插件后，控制插件内容的显示
+  // 说明: 集成插件后，控制插件内容的显示
   componentWillReceiveProps(nextProps) {
     this.setState({showDialog: nextProps.showDialog});  
   } 
 
-  // 说明3: 模版函数，无需改动
+  // 说明: 模版函数，无需改动
   async initPluginDTableData() {
     if (window.app === undefined) {
       // local develop
       window.app = {};
       await this.dtable.init(window.dtablePluginConfig);
-      let res = await this.initPluginRelatedUsers(this.dtable.dtableStore);
-      window.app.collaborators = res.data.user_list;
-      this.dtable.subscribe('dtable-connect', () => { this.onDTableConnect(); });
-      this.dtable.subscribe('remote-data-changed', () => { this.onDTableChanged(); });
       await this.dtable.syncWithServer();
-      this.resetData();
-    } else {
+      this.dtable.subscribe('dtable-connect', () => { this.onDTableConnect(); });
+    } else { 
       // integrated to dtable app
       this.dtable.initInBrowser(window.app.dtableStore);
-      let res = await this.initPluginRelatedUsers(this.dtable.dtableStore);
-      window.app.collaborators = res.data.user_list;
-      this.dtable.subscribe('remote-data-changed', () => { this.onDTableChanged(); });
-      await this.dtable.init(window.dtablePluginConfig);
-      this.resetData();
     }
-  }
-  
-  // 说明4: 模版函数，无需改动
-  async initPluginRelatedUsers(dtableStore) {
-    return dtableStore.dtableAPI.getTableRelatedUsers();
+    this.dtable.subscribe('remote-data-changed', () => { this.onDTableChanged(); });
+    this.resetData();
   }
 
-  // 说明5: 模版函数，无需改动
+  // 说明: 模版函数，无需改动
   onDTableConnect = () => {
     this.resetData();
   }
 
-  // 说明6: 模版函数，无需改动
+  // 说明: 模版函数，无需改动
   onDTableChanged = () => {
     this.resetData();
   }
 
-  // 说明7: 依据需求，更新显示数据
+  // 说明: 依据需求，更新显示数据
   resetData = () => {
     this.setState({
       isLoading: false,
@@ -197,26 +186,26 @@ class App extends React.Component {
     });
   }
 
-  // 说明8: 模版函数，无需改动
+  // 说明: 模版函数，无需改动
   onPluginToggle = () => {
     this.setState({showDialog: false});
   }
 
-  // 说明9: 依据需求，更新显示内容
+  // 说明: 依据业务需求，更新显示内容
   render() {
     let { isLoading, showDialog } = this.state;
     if (isLoading) {
       return '';
     }
 
-    let { collaborators } = window.app;
-    let dtableStore = this.dtable.dtableStore;
+    let subtables = this.dtable.getTables();
+    let collaborators = this.dtable.getRelatedUsers();
     
     return (
-      <Modal isOpen={showDialog} toggle={this.onPluginToggle} contentClassName="dtable-plugin plugin-container" size='lg'>
+      <Modal isOpen={showDialog} toggle={this.onPluginToggle} className="dtable-plugin plugin-container" size="lg">
         <ModalHeader className="test-plugin-header" toggle={this.onPluginToggle}>{'插件'}</ModalHeader>
         <ModalBody className="test-plugin-content">
-          <div>{`'dtable-value: '${JSON.stringify(dtableStore.value)}`}</div>
+          <div>{`'dtable-subtables: '${JSON.stringify(subtables)}`}</div>
           <br></br>
           <div>{`'dtable-collaborators: '${JSON.stringify(collaborators)}`}</div>
         </ModalBody>
