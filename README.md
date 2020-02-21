@@ -142,7 +142,7 @@ class App extends React.Component {
     this.dtable = new DTable();
   }
 
-  // 说明: 初始化 dtable-sdk 插件的接口对象 DTable 数据，初始化 window.app 对象中的 collaborators
+  // 说明: 初始化 dtable-sdk 插件的接口对象 DTable 数据
   componentDidMount() {
     this.initPluginDTableData();  
   }
