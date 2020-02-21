@@ -112,7 +112,7 @@ const config = {
 
 * 运行 npm install 安装插件依赖项
 * 运行 npm run start 运行本地开发环境
-* 此时在界面上显示出dtable表格的value值，及表格中协作人（collaborators）的详细信息（本地开发版本使用 settings 中的配置来获取 dtable 数据。集成版本直接获取当前浏览器中的 dtable 数据）。
+* 此时在界面上显示出dtable表格所有子表的value值，及表格中协作人（collaborators）的详细信息（本地开发版本使用 settings 中的配置来获取 dtable 数据。集成版本直接获取当前浏览器中的 dtable 数据）。
   1. dtable表格的中子表(tables)的相关数据，可以通过dtable 提供的 getTables 接口函数获取
   2. dtable表格协作人(collaborators)的详细信息，可以通过dtable 提供的 getRelatedUsers 接口函数获取
    
