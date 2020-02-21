@@ -40,7 +40,6 @@ class App extends React.Component {
       this.dtable.initInBrowser(window.app.dtableStore);
     }
     this.dtable.subscribe('remote-data-changed', () => { this.onDTableChanged(); });
-    window.app.collaborators = this.dtable.getRelatedUsers();
     this.resetData();
   }
 
@@ -69,14 +68,14 @@ class App extends React.Component {
       return '';
     }
 
-    let { collaborators } = window.app;
-    let dtableStore = this.dtable.dtableStore;
+    let subtables = this.dtable.getTables();
+    let collaborators = this.dtable.getRelatedUsers();
     
     return (
       <Modal isOpen={showDialog} toggle={this.onPluginToggle} className="dtable-plugin plugin-container" size="lg">
         <ModalHeader className="test-plugin-header" toggle={this.onPluginToggle}>{'插件'}</ModalHeader>
         <ModalBody className="test-plugin-content">
-          <div>{`'dtable-value: '${JSON.stringify(dtableStore.value)}`}</div>
+          <div>{`'dtable-subtables: '${JSON.stringify(subtables)}`}</div>
           <br></br>
           <div>{`'dtable-collaborators: '${JSON.stringify(collaborators)}`}</div>
         </ModalBody>
