@@ -75,7 +75,7 @@ info.json 说明
 ### 2. 修改插件信息文件
 
 * 在 plugin-config 文件夹中添加自定义的 icon.png 作为插件的图标（可不提供，采用默认图标。icon.png 要求是 128x128 像素)
-* 在 plugin-config 文件夹中添加自定义的 card_image.png 作为插件图标的背景图（可不提供，显示默认背景。card_image.png 要求是 1840x400 像素，实际显示为 920x200 像素，这是为了在高清屏上显示不会模糊)
+* 在 plugin-config 文件夹中添加自定义的 card_image.png 作为插件图标的背景图（可不提供，显示默认背景。card_image.png 要求是 560x240 像素，实际显示为 280x120 像素，这是为了在高清屏上显示不会模糊)
 * 修改 plugin-config 文件夹中 info.json 配置文件
 
 ```
