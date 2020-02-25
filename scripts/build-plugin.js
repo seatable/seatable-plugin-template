@@ -45,10 +45,10 @@ const pluginInfoContentExpand = {
 
 let jsonFileContent = Object.assign({}, pluginInfoContent, pluginInfoContentExpand);
 
-zip.file('task/info.json', JSON.stringify(jsonFileContent));
+zip.file('task/info.json', JSON.stringify(jsonFileContent, null, '\t'));
 
 zip.generateAsync({type: "nodebuffer"}).then(function(content) { 
-  let zip = 'task.zip';
+  let zip = `${pluginInfoContent.name}-${pluginInfoContent.version}.zip`;
   fs.writeFile(paths.zipPath + '/' + zip, content, function(err) {
     if (err) {
       console.log(zip + ' failed');
