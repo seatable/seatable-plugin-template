@@ -45,7 +45,7 @@ const pluginInfoContentExpand = {
 
 let jsonFileContent = Object.assign({}, pluginInfoContent, pluginInfoContentExpand);
 
-zip.file('task/info.json', JSON.stringify(jsonFileContent, null, '\t'));
+zip.file('task/info.json', JSON.stringify(jsonFileContent, null, '  '));
 
 zip.generateAsync({type: "nodebuffer"}).then(function(content) { 
   let zip = `${pluginInfoContent.name}-${pluginInfoContent.version}.zip`;
