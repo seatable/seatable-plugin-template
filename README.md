@@ -1,126 +1,128 @@
-# SeaTable 插件开发
+# SeaTable Plugin Development
 
-SeaTable 插件让你可以按照自己的需求去给一个表格提供额外的功能。SeaTable 插件用 JavaScript 语言编写。编译打包后可以安装到一个表格中。
+The SeaTable plugin allows you to provide additional functionality to a table according to your needs. The SeaTable plugin is written in JavaScript language. After compiling and packaging, it can be installed into a table.
 
-这个仓库提供了插件的模板和打包脚本。
+This repository provides templates and packaging scripts for plugins.
 
-## 插件开发库
+## Plugin Development Library
 
-插件开发可以使用下面两个库
+Plug-in development can use the following two libraries
 
-1. dtable-sdk，提供读写当前 dtable 数据的 API (https://docs.seatable.io/published/dtable-sdk/home.md)
-2. (可选) dtable-ui-component，提供可复用的 UI 组件库 (待完善)
+1. dtable-sdk, which provides an API for reading and writing the current dtable data (https://docs.seatable.io/published/dtable-sdk/home.md)
+2. (Optional) dtable-ui-component, which provides a reusable UI component library (to be improved)
 
-> SeaTable 系统中的一个表格叫做 dtable (database table)
+> A table in the SeaTable system is called dtable (database table)
 
-## 插件目录结构说明
-
-```
-build ----------------------------------- 项目编译后的文件夹
-config ---------------------------------- 项目编译配置文件夹
-plugin-config --------------------------- 项目 zip 打包配置文件夹
-plugin-zip ------------------------------ 项目 zip 打包后 zip 所在文件夹
-public ---------------------------------- 项目本地开发静态文件文件夹
-scripts --------------------------------- 项目打包脚本
-src ------------------------------------- 项目源码文件夹
-  app.js -------------------------------- 项目主代码
-  entery.js ----------------------------- 插件在集成环境下的入口文件
-  index.js ------------------------------ 开发环境下入口文件
-  setting.js ---------------------------- 开发环境下配置文件
-```
-
-## 插件包
-
-插件包是一个 zip 格式的文件。它解压后的目录结构如下
+## Plugin Directory Structure
 
 ```
-   your-plugin                        
-     -- main.js             // 插件编译后的 js 文件
-     -- info.json           // 插件的信息文件
-     -- media               // 插件静态文件文件夹
-     -- media/main.css      // 编译后的 css 文件
-     -- media/icon.png      // 插件的 icon 图片 
-     -- media/card_image.png // 插件 icon 的背景图片
+build ----------------------------------- folder after project compilation
+config ---------------------------------- project compilation configuration folder
+plugin-config --------------------------- project zip package configuration folder
+plugin-zip ------------------------------ project zip folder after zip packaging
+public ---------------------------------- project local development static files folder
+scripts --------------------------------- project packaging scripts
+src ------------------------------------- project source folder
+  app.js -------------------------------- project main code
+  entery.js ----------------------------- The entry file of the plugin in the integrated environment
+  index.js ------------------------------ Entry file in the development environment
+  setting.js ---------------------------- Configuration file in development environment
 ```
 
-info.json 说明
-   
+## Plugin Package
+
+The plug-in package is a file in zip format. The directory structure after decompression is as follows
+
+```
+   your-plugin
+     -main.js // compiled js file
+     -info.json // plugin info file
+     -media // plugin static files folder
+     -media / main.css // compiled css file
+     -media / icon.png // icon image of the plugin
+     -media / card_image.png // background image for plugin icon
+```
+
+info.json description
+   
 ```
 {
-  "name": '',                   // 插件英文名字，只能包含字母、数字、下划线、中划线
-  "version": '',                // 插件版本号，需要是类似 1.0.3 这样的格式
-  "display_name": '',           // 插件在界面上显示的名字
-  "description": '',            // 插件功能相关描述
-  "has_css": true/false,        // 插件是否包含 css 文件
-  "has_icon": true/false,       // 插件是否包含 icon 图片
-  "has_card_image": true/false  // 插件是否包含背景图片
+  "name": '', // English name of plugin, can only contain letters, numbers, underscores, and underscores
+  "version": '', // plugin version number, need to be in a format like 1.0.3
+  "display_name": '', // the name the plugin displays on the interface
+  "description": '', // description of plugin function
+  "has_css": true / false, // whether the plugin contains css files
+  "has_icon": true / false, // whether the plugin contains icon images
+  "has_card_image": true / false // whether the plugin contains a background image
 }
 ```
 
-## 插件工作模式
+## Plugin working mode
 
-插件可以以两种方式运行，一种是开发环境，一种是生产环境。
+Plugins can be run in two ways, one is a development environment, and the other is a production environment.
 
-开发环境下，程序初始化的时候通过配置文件中的信息来加载服务器上的表格，然后主动弹出一个对话框。
+In the development environment, when the program is initialized, the table on the server is loaded through the information in the configuration file, and then a dialog box is actively displayed.
 
-生产环境下，表格的数据已经在浏览器中，所以不需要加载。程序初始化的时候 (entry.js) 向 SeaTable 注册一个回调函数。用户点击插件对应的按钮的时候这个回调函数会被执行。在这个模板中，回调函数的行为是让插件弹出一个对话框，并在其中显示能通过 dtable SDK 接口
+In the production environment, the table data is already in the browser, so it does not need to be loaded. When the program is initialized (entry.js), it register a callback function with SeaTable. This callback function will be executed when the user clicks the button corresponding to the plugin. In this template, the behavior of the callback function is to let the plug-in pop up a dialog box and display it in the template through the dtable SDK interface
 
+## Basic process of plugin development
 
-## 插件开发基本流程
+### 1. clone project
 
-### 1. clone 项目
-
-* clone 当前项目到本地
+* clone current project to local
    
-### 2. 修改插件信息文件
+### 2. Modify the plugin information file
 
-* 在 plugin-config 文件夹中添加自定义的 icon.png 作为插件的图标（可不提供，采用默认图标。icon.png 要求是 128x128 像素)
-* 在 plugin-config 文件夹中添加自定义的 card_image.png 作为插件图标的背景图（可不提供，显示默认背景。card_image.png 要求是 560x240 像素，实际显示为 280x120 像素，这是为了在高清屏上显示不会模糊)
-* 修改 plugin-config 文件夹中 info.json 配置文件
-
-```
-  "name": '',                   // 插件英文名字，只能包含字母、数字、下划线、中划线
-  "version": '',                // 插件版本号
-  "display_name": '',           // 插件显示的名字
-  "description": '',            // 插件功能相关描述
-```
-
-这里不需要添加其他配置参数，其他参数由打包工具自动生成
-
-### 3. 修改entry.js文件中的插件注册函数 
+* Add a custom icon.png as the icon of the plugin in the plugin-config folder (if it is not provided, the default icon will be used. icon.png requires 128x128 pixels)
+* Add custom card_image.png as the background image of the plugin icon in the plugin-config folder (if it is not provided, the default background is displayed. card_image.png is required to be 560x240 pixels, the actual display is 280x120 pixels.
+* Modify info.json configuration file in plugin-config folder
 
 ```
-  更新 window.app.registerPluginItemCallback('test', TaskList.execute);
+  "name": '', // English name of plugin, can only contain letters, numbers, underscores, and underscores
+  "version": '', // plugin version number
+  "display_name": '', // name of the plugin display
+  "description": '', // description of plugin function
+```
+
+There is no need to add other configuration parameters here, other parameters are automatically generated by the packaging tool
+
+### 3. Modify plugin registration function in entry.js file
+
+```
+  Update window.app.registerPluginItemCallback ('test', TaskList.execute);
   ⬇️
-  为： window.app.registerPluginItemCallback(name, TaskList.execute);  此处的name 值为plugin-config/info.json中的“name”值
+  To： window.app.registerPluginItemCallback (name, TaskList.execute); where the value of name is the value of "name" in plugin-config/info.json
 ```
 
-### 4. 修改插件开发配置文件 settings.js
+> Note, the "name" must be the save as in the info.json. Otherwise your plugin can't work.
 
-配置文件用于本地开发获取 dtable 数据。
+### 4. Modify plugin development configuration file settings.js
+
+The configuration file is used for local development to get dtable data.
 
 ```
-配置参数说明：
+Configuration parameter description:
 const config = {
-  APIToken: "**",               // 需添加插件的 dtable 的 api token
-  server: "**",                 // 需添加插件的 dtable 的部署网址
-  workspaceID: "**",            // 需添加插件的 dtable 所在的 workspace 的 id 值
-  dtableName: "**",             // 需添加插件的 dtable 的名字
-  lang: "**"                    // 默认语言类型，en 或者 zh-cn
+  APIToken: "**", // dtable api token to be added
+  server: "**", // The deployment URL of the dtable to which the plugin needs to be added
+  workspaceID: "**", // The id value of the workspace where the dtable of the plugin needs to be added
+  dtableName: "**", // The name of the dtable to add the plugin to
+  lang: "**" // default language type, en or zh-cn
 };
 ```
 
-### 5. 开始开发
+### 5. Start development
 
-* 运行 npm install 安装插件依赖项
-* 运行 npm run start 运行本地开发环境
-* 此时在界面上显示出 dtable 表格所有子表的value值，及表格中协作人 (collaborators) 的详细信息（本地开发版本使用 settings 中的配置来获取 dtable 数据。集成版本直接获取当前浏览器中的 dtable 数据）。
-  1. dtable 表格的中子表(tables)的相关数据，可以通过 dtable 提供的 getTables 接口函数获取
-  2. dtable 表格协作人(collaborators)的详细信息，可以通过 dtable 提供的 getRelatedUsers 接口函数获取
+* Run `npm install` to install plugin dependencies
+* Run `npm run start` to run the local development environment
+* At this time, the values ​​of all subtables of the dtable and the details of collaborators in the table are displayed on the interface (the local development version uses the configuration in settings to obtain dtable data. The integrated version directly obtains the current browser DTable data).
+  1. The dtable value (tables) can be obtained through the getTables interface function provided by dtable.
+  2. The collaborators can be obtained through the getRelatedUsers interface function provided by dtable.
    
-* 依据需求，使用 dtable-sdk 提供的接口函数，更新 app.js 完成插件功能开发
+* According to requirements, use the interface functions provided by dtable-sdk to update app.js to complete the plug-in function development
 
-app.js 代码结构说明
+app.js code explained
+
 ```
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -144,17 +146,17 @@ class App extends React.Component {
     this.dtable = new DTable();
   }
 
-  // 说明: 初始化 dtable-sdk 插件的接口对象 DTable 数据
+  // Description: Initialize the dtable-sdk plugin's interface object 
   componentDidMount() {
     this.initPluginDTableData();  
   }
 
-  // 说明: 集成插件后，控制插件内容的显示
+  // Description: After integrating the plugin, control the display of the content of the plugin
   componentWillReceiveProps(nextProps) {
     this.setState({showDialog: nextProps.showDialog});  
   } 
 
-  // 说明: 模版函数，无需改动
+  // Explanation: template function, no need to change
   async initPluginDTableData() {
     if (window.app === undefined) {
       // local develop
@@ -170,17 +172,17 @@ class App extends React.Component {
     this.resetData();
   }
 
-  // 说明: 模版函数，无需改动
+  // Explanation: template function, no need to change
   onDTableConnect = () => {
     this.resetData();
   }
 
-  // 说明: 模版函数，无需改动
+  // Explanation: template function, no need to change
   onDTableChanged = () => {
     this.resetData();
   }
 
-  // 说明: 依据需求，更新显示数据
+  // Explanation: Update display data according to requirements
   resetData = () => {
     this.setState({
       isLoading: false,
@@ -188,12 +190,12 @@ class App extends React.Component {
     });
   }
 
-  // 说明: 模版函数，无需改动
+  // Explanation: template function, no need to change
   onPluginToggle = () => {
     this.setState({showDialog: false});
   }
 
-  // 说明: 依据业务需求，更新显示内容
+  // Explanation: Update display content according to business needs
   render() {
     let { isLoading, showDialog } = this.state;
     if (isLoading) {
@@ -222,7 +224,7 @@ export default App;
 
 ```
 
-## 打包上传插件
+## Build zip package and upload plugin
 
-1. 执行 npm run build-plugin 打包插件
-2. 上传插件到 dtable 中
+1. Run `npm run build-plugin` to package the plugin
+2. Upload the plugin to dtable
