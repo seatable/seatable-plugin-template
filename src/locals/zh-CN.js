@@ -1,6 +1,6 @@
 const zh_CN = {
-  "key1": "中国",
-  "key2": "河南"
+  "shanshui": "中国",
+  "hello_someone": "你好，{name}！"
 };
 
 export default zh_CN;

@@ -1,6 +1,6 @@
 const en = {
-  "key1": "english",
-  "key2": "lundun"
+  "shanshui": "english",
+  "hello_someone": "hello,{name}!"
 };
 
 export default en;

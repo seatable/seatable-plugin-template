@@ -2,8 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import DTable from 'dtable-sdk';
+import { setLocale, getLocale, substitute } from './lang';
 
 import './css/plugin-layout.css';
+
+let lang = window.dtable ? window.dtable.lang : null;
+setLocale(lang);
 
 const propTypes = {
   showDialog: PropTypes.bool
@@ -76,8 +80,11 @@ class App extends React.Component {
         <ModalHeader className="test-plugin-header" toggle={this.onPluginToggle}>{'Plugin'}</ModalHeader>
         <ModalBody className="test-plugin-content">
           <div>{`'dtable-subtables: '${JSON.stringify(subtables)}`}</div>
-          <br></br>
+          <br />
           <div>{`'dtable-collaborators: '${JSON.stringify(collaborators)}`}</div>
+          <br />
+          <div>{getLocale('shanshui')}</div>
+          <div>{substitute(getLocale('hello_someone'), {name: '小强'})}</div>
         </ModalBody>
       </Modal>
     );
