@@ -25,7 +25,7 @@ let locales = {
 };
 
 let lang = (window.dtable && window.dtable.lang) ? window.dtable.lang : LAUGUAGE;
-console.log(lang);
+
 intl.init({
   currentLocale: lang,
   locales
