@@ -127,13 +127,13 @@ const config = {
 
 在项目中的使用方法
 1. 在src/locale/lang 中添加支持的语言文件 **.js
-2. 在文件中添加相应的需要翻译的key值、value值键值对
+2. 在文件中添加相应的需要国际话的key值、value值键值对
 3. 在src/locale/index.js文件中
     * 导入定义的语言文件
     * 定义默认支持的语言类型LANUGUAGE
     * 将语言添加到locales对象中
-4. 在需要添加翻译内容的组件中 导入翻译组件 `import intl from 'react-intl-universal`
-5. 调用intl的接口函数完成相应的翻译工作，使用文档请移步➡️[react-intl-universal](https://github.com/alibaba/react-intl-universal)
+4. 在需要添加国际化内容的组件中导入翻译组件 `import intl from 'react-intl-universal`
+5. 调用intl的接口函数完成相应的国际话工作，使用文档请移步➡️[react-intl-universal](https://github.com/alibaba/react-intl-universal)
 
 
 ### 6. 开始开发
