@@ -23,6 +23,9 @@ plugin-zip ------------------------------ project zip folder after zip packaging
 public ---------------------------------- project local development static files folder
 scripts --------------------------------- project packaging scripts
 src ------------------------------------- project source folder
+  locale -------------------------------- project internationalization Support Folder
+    lang -------------------------------- language folder
+    index.js ---------------------------- internationalization language support entry file
   app.js -------------------------------- project main code
   entery.js ----------------------------- The entry file of the plugin in the integrated environment
   index.js ------------------------------ Entry file in the development environment
@@ -111,7 +114,29 @@ const config = {
 };
 ```
 
-### 5. Start development
+### 5. Add internationalization support
+> The plug-in project needs to be integrated into the dtable project for execution, so the plug-in project needs to be packaged into a js file for uploading and loading, and the translation file also needs to be packaged into a js file.
+
+Recommended use [react-intl-universal](https://github.com/alibaba/react-intl-universal) complete plugin internationalization
+
+Internationalized content supported by the plugin contains:
+1. Number
+2. Currency
+3. Date
+4. Times
+5. Message（Default Message、Message With Variables、HTML Message)
+
+How to use in the project:
+1. Add supported language files in `src/locale/lang` **. Js
+2. Add the corresponding international key and value key-value pairs in the file
+3. In `src/locale/index.js` file
+    * Import the defined language file
+    * Define the language type supported by default
+    * Add language to locales object
+4. Import translation components in components that need to add internationalized content `import intl from 'react-intl-universal`
+5. Call the intl interface function to complete the corresponding international call work, please use the documentation to move ➡️[react-intl-universal](https://github.com/alibaba/react-intl-universal)
+
+### 6. Start development
 
 * Run `npm install` to install plugin dependencies
 * Run `npm run start` to run the local development environment
