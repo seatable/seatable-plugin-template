@@ -80,9 +80,12 @@ class App extends React.Component {
           <div>{`'dtable-subtables: '${JSON.stringify(subtables)}`}</div>
           <br></br>
           <div>{`'dtable-collaborators: '${JSON.stringify(collaborators)}`}</div>
-          <div>{intl.get('shanshui')}</div>
-          <div>{intl.get('hello_someone', {name: '小强'})}</div>
-          <div>{intl.getHTML('contans_html_params', {params: '参数1，参数2'})}</div>
+          <div className="mt-4">
+            <h2 className="text-left">{intl.get('international_demo')}</h2>
+            <div>{intl.get('shanshui')}</div>
+            <div>{intl.get('hello_someone', {name: '小强'})}</div>
+            <div>{intl.getHTML('contans_html_params', {params: '参数1，参数2'})}</div>
+          </div>
         </ModalBody>
       </Modal>
     );

@@ -9,9 +9,8 @@ import fr from './lang/fr';
 import it from './lang/it';
 import ru from './lang/ru';
 import zh_CN from './lang/zh-CN';
-import { LAUGUAGE } from '../config/config';
 
-let locales = {
+const LOCALES = {
   'cs': cs,
   'de': de,
   'en': en,
@@ -24,9 +23,7 @@ let locales = {
   'zh-cn': zh_CN,
 };
 
-let lang = (window.dtable && window.dtable.lang) ? window.dtable.lang : LAUGUAGE;
+const LAUGUAGE = 'en';
 
-intl.init({
-  currentLocale: lang,
-  locales
-});
+let lang = (window.dtable && window.dtable.lang) ? window.dtable.lang : LAUGUAGE;
+intl.init({currentLocale: lang, locales: LOCALES});
