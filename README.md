@@ -23,7 +23,7 @@ plugin-zip ------------------------------ project zip folder after zip packaging
 public ---------------------------------- project local development static files folder
 scripts --------------------------------- project packaging scripts
 src ------------------------------------- project source folder
-  locale -------------------------------- project internationalization Support Folder
+  locale -------------------------------- project internationalization support folder
     lang -------------------------------- language folder
     index.js ---------------------------- internationalization language support entry file
   app.js -------------------------------- project main code
@@ -115,18 +115,18 @@ const config = {
 ```
 
 ### 5. Add internationalization support
-> The plug-in project needs to be integrated into the dtable project for execution, so the plug-in project needs to be packaged into a js file for uploading and loading, and the translation file also needs to be packaged into a js file.
+> The translation strings should be placed in js files and packaged with the plugin's other js source files into a final js file.
 
-Recommended use [react-intl-universal](https://github.com/alibaba/react-intl-universal) complete plugin internationalization
+We recommend to use [react-intl-universal](https://github.com/alibaba/react-intl-universal) for plugin internationalization.
 
-Internationalized content supported by the plugin contains:
+This library support internationalization for the following contents:
 1. Number
 2. Currency
 3. Date
 4. Times
 5. Message（Default Message、Message With Variables、HTML Message)
 
-How to use in the project:
+Steps:
 1. Add supported language files in `src/locale/lang` **. Js
 2. Add the corresponding international key and value key-value pairs in the file
 3. In `src/locale/index.js` file

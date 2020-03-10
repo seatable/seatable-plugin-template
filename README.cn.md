@@ -114,18 +114,18 @@ const config = {
 ```
 
 ### 5. 添加国际化支持
-> 插件项目需要集成到dtable项目中进行执行，所以插件项目需要打包到一个js文件便于上传和加载，翻译文件同样需要打包到js文件中
+> 翻译字符串应该放在 js 文件中，并和插件的其他 js 源码文件一起打包成一个 js 文件。
 
-推荐使用[react-intl-universal](https://github.com/alibaba/react-intl-universal)完成插件的国际化操作
+这里推荐使用 [react-intl-universal](https://github.com/alibaba/react-intl-universal) 来实现插件的国际化。
 
-该插件支持的翻译内容包含：
+这个库支持的翻译内容包含
 1. 数值
 2. 货币
 3. 日期
 4. 时间
 5. 文本（普通文本、包含变量的文本、html文本）
 
-在项目中的使用方法：
+使用方法:
 1. 在`src/locale/lang`中添加支持的语言文件 **.js
 2. 在文件中添加需要国际化的key、value键值对
 3. 在`src/locale/index.js`文件中
