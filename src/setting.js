@@ -1,6 +1,6 @@
 
 const config = {
-  APIToken: "602dde08f3d852d533f3b947e760ca7739b6ace3",
+  APIToken: "0b2ccf4a292aa4a898969d05fc64b8a037b80531",
   server: "http://127.0.0.1:80/",
   workspaceID: "1",
   dtableName: "test",
