@@ -1,8 +1,7 @@
 const zh_CN = {
   "shanshui": "中国",
   "hello_someone": "你好，{name}！",
-  "test_child_component": "测试子组件",
-  "test_child_component_params": "测试子组件： {params}"
+  "contans_html_params": "测试子组件：<span class='bg-primary'>{params}</span>"
 };
 
 export default zh_CN; 
