@@ -28,6 +28,11 @@ class App extends React.Component {
     this.setState({showDialog: nextProps.showDialog});
   } 
 
+  componentWillUnmount() {
+    this.unsubscribeLocalDtableChanged();
+    this.unsubscribeRemoteDtableChanged();
+  }
+
   async initPluginDTableData() {
     if (window.app === undefined) {
       // local develop
@@ -39,7 +44,8 @@ class App extends React.Component {
       // integrated to dtable app
       this.dtable.initInBrowser(window.app.dtableStore);
     }
-    this.dtable.subscribe('remote-data-changed', () => { this.onDTableChanged(); });
+    this.unsubscribeLocalDtableChanged = this.dtable.subscribe('local-dtable-changed', () => { this.onDTableChanged(); });
+    this.unsubscribeRemoteDtableChanged = this.dtable.subscribe('remote-dtable-changed', () => { this.onDTableChanged(); });
     this.resetData();
   }
 
