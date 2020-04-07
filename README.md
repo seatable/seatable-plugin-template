@@ -115,7 +115,35 @@ const config = {
 ```
 
 ### 5. Add internationalization support
-> The translation strings should be placed in js files and packaged with the plugin's other js source files into a final js file.
+
+#### There are two cases of plugin internationalization
+
+1. Plugin display name internationalization
+2. Internationalization of the internal content of the plugin: The translation strings should be placed in js files and packaged with the plugin's other js source files into a final js file.
+
+
+#### Plugin display name internationalization
+
+The name displayed by the plug-in can also provide an international display. If you need to provide internationalization for the display name of the plug-in, you can modify the display_name parameter in the plug-in configuration information file `info.json`, the modification type is as follows:
+
+```
+display_name: {
+  'en': '',
+  'fr': '',
+  'de': '',
+  'zh-cn': '',
+  ...
+}
+```
+
+If you do not need to provide internationalization for the display name of the plug-in, you can directly assign the display_name parameter in the plug-in configuration information file `info.json`
+
+```
+display_name: ''
+```
+
+
+#### Internationalization of the internal content of the plugin
 
 We recommend to use [react-intl-universal](https://github.com/alibaba/react-intl-universal) for plugin internationalization.
 
