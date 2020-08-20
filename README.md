@@ -107,7 +107,7 @@ The configuration file is used for local development to get dtable data.
 Configuration parameter description:
 const config = {
   APIToken: "**", // dtable api token to be added
-  server: "**", // The deployment URL of the dtable to which the plugin needs to be added
+  server: "**", // The server URL of the dtable to which the plugin needs to be added
   workspaceID: "**", // The id value of the workspace where the dtable of the plugin needs to be added
   dtableName: "**", // The name of the dtable to add the plugin to
   lang: "**" // default language type, en or zh-cn
