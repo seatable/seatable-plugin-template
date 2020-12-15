@@ -52,7 +52,7 @@ info.json 说明
 {
   "name": '',                   // 插件英文名字，只能包含字母、数字、下划线、中划线
   "version": '',                // 插件版本号，需要是类似 1.0.3 这样的格式
-  "display_type": 'dialog/overlary', // 插件在界面上显示的模式, 弹出一个对话框或者弹出一个新层
+  "display_type": 'dialog/overlary', // 插件显示模式, 弹出一个对话框或者一个新层
   "display_name": '',           // 插件在界面上显示的名字
   "description": '',            // 插件功能相关描述
   "has_css": true/false,        // 插件是否包含 css 文件
