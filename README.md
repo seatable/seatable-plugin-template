@@ -52,6 +52,7 @@ info.json description
 {
   "name": '', // English name of plugin, can only contain letters, numbers, underscores, and underscores
   "version": '', // plugin version number, need to be in a format like 1.0.3
+  "display_type": 'dialog / overlary', // plugin display mode on in the interface, popup a dialog ot popup a overlary
   "display_name": '', // the name the plugin displays on the interface
   "description": '', // description of plugin function
   "has_css": true / false, // whether the plugin contains css files
