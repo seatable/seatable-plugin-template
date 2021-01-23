@@ -5,7 +5,7 @@ import DTable from 'dtable-sdk';
 import intl from 'react-intl-universal';
 import './locale/index.js'
 
-import './css/plugin-layout.css';
+import './assets/css/plugin-layout.css';
 
 const propTypes = {
   showDialog: PropTypes.bool
