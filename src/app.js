@@ -36,9 +36,9 @@ class App extends React.Component {
   }
 
   async initPluginDTableData() {
-    if (window.app === undefined) {
+    const { isDevelopment } = this.props;
+    if (isDevelopment) {
       // local develop
-      window.app = {};
       await this.dtable.init(window.dtablePluginConfig);
       await this.dtable.syncWithServer();
       this.dtable.subscribe('dtable-connect', () => { this.onDTableConnect(); });
