@@ -5,7 +5,7 @@ import DTable from 'dtable-sdk';
 import intl from 'react-intl-universal';
 import './locale/index.js'
 
-import './css/plugin-layout.css';
+import './assets/css/plugin-layout.css';
 
 const propTypes = {
   showDialog: PropTypes.bool
@@ -36,9 +36,9 @@ class App extends React.Component {
   }
 
   async initPluginDTableData() {
-    if (window.app === undefined) {
+    const { isDevelopment } = this.props;
+    if (isDevelopment) {
       // local develop
-      window.app = {};
       await this.dtable.init(window.dtablePluginConfig);
       await this.dtable.syncWithServer();
       this.dtable.subscribe('dtable-connect', () => { this.onDTableConnect(); });

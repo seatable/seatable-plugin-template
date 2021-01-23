@@ -1,9 +1,9 @@
 {
   "name": "seatable-plugin-template",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
-    "dtable-sdk": "0.0.16",
+    "dtable-sdk": "0.0.65",
     "moment": "^2.24.0",
     "react": "^16.12.0",
     "react-app-polyfill": "^1.0.6",
@@ -16,6 +16,9 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
+    "translate": "node scripts/translate.js",
+    "push-translate": "tx push -s",
+    "pull-translate": "tx pull -a -f && npm run translate",
     "build-plugin": "export GENERATE_SOURCEMAP=false && npm run clean && npm run build && node scripts/build-plugin.js"
   },
   "browserslist": {
