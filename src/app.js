@@ -60,10 +60,7 @@ class App extends React.Component {
   }
 
   resetData = () => {
-    this.setState({
-      isLoading: false,
-      showDialog: true
-    });
+    this.setState({isLoading: false});
   }
 
   onPluginToggle = () => {
