@@ -27,9 +27,11 @@ src ------------------------------------- project source folder
     lang -------------------------------- language folder
     index.js ---------------------------- internationalization language support entry file
   app.js -------------------------------- project main code
-  entery.js ----------------------------- The entry file of the plugin in the integrated environment
+  entry.js ------------------------------ The entry file of the plugin in the integrated environment
   index.js ------------------------------ Entry file in the development environment
   setting.js ---------------------------- Configuration file in development environment
+  setting.local.dist.js ----------------- Sample configuration file in development environment
+  setting.local.js ---------------------- The configuration file created by the developer based on the profit in the development environment
 ```
 
 ## Plugin Package
