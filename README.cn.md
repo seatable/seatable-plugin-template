@@ -30,8 +30,8 @@ src ------------------------------------- 项目源码文件夹
   entry.js ----------------------------- 插件在集成环境下的入口文件
   index.js ------------------------------ 开发环境下入口文件
   setting.js ---------------------------- 开发环境下配置文件
-  setting.local.dist.js ----------------- 开发环境下配置文件样例
-  setting.local.js ---------------------- 开发环境下由开发人员依据样利创建的配置文件
+  setting.local.dist.js ----------------- 本地开发环境配置文件样例
+  setting.local.js ---------------------- 本地开发环境下配置文件 (从样例拷贝后再修改)
 ```
 
 ## 插件包
@@ -101,12 +101,13 @@ info.json 说明
   为： window.app.registerPluginItemCallback(name, TaskList.execute);  此处的name 值为plugin-config/info.json中的“name”值
 ```
 
-### 4. 修改插件开发配置文件 settings.js
+### 4. 修改插件开发配置文件
 
-配置文件用于本地开发获取 dtable 数据。
+把 setting.local.dist.js 拷贝为 setting.local.js，然后再修改。
+
+这个配置文件用于本地开发获取 dtable 数据:
 
 ```
-配置参数说明：
 const config = {
   APIToken: "**",               // 需添加插件的 dtable 的 api token
   server: "**",                 // 需添加插件的 dtable 的部署网址
