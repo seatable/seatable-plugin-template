@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "private": true,
   "dependencies": {
-    "dtable-sdk": "0.0.65",
+    "dtable-sdk": "0.0.67",
     "moment": "^2.24.0",
     "react": "^16.12.0",
     "react-app-polyfill": "^1.0.6",

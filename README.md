@@ -27,9 +27,11 @@ src ------------------------------------- project source folder
     lang -------------------------------- language folder
     index.js ---------------------------- internationalization language support entry file
   app.js -------------------------------- project main code
-  entery.js ----------------------------- The entry file of the plugin in the integrated environment
+  entry.js ------------------------------ The entry file of the plugin in the integrated environment
   index.js ------------------------------ Entry file in the development environment
   setting.js ---------------------------- Configuration file in development environment
+  setting.local.dist.js ----------------- Local sample configuration file in development environment
+  setting.local.js ---------------------- Local configuration file (You should create it by copying from setting.local.dist.js)
 ```
 
 ## Plugin Package
@@ -100,12 +102,13 @@ There is no need to add other configuration parameters here, other parameters ar
 
 > Note, the "name" must be the save as in the info.json. Otherwise your plugin can't work.
 
-### 4. Modify plugin development configuration file settings.js
+### 4. Modify plugin development configuration file
 
-The configuration file is used for local development to get dtable data.
+You should put your local settings in `setting.local.js` by copying from the sample file `setting.local.dist.js`
+
+The configuration file is used for local development to get dtable data:
 
 ```
-Configuration parameter description:
 const config = {
   APIToken: "**", // dtable api token to be added
   server: "**", // The server URL of the dtable to which the plugin needs to be added
