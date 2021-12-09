@@ -8,7 +8,8 @@ import './locale/index.js'
 import './assets/css/plugin-layout.css';
 
 const propTypes = {
-  showDialog: PropTypes.bool
+  showDialog: PropTypes.bool,
+  row: PropTypes.object, // If the plugin is opened with a button, it will have a row parameter
 };
 
 class App extends React.Component {

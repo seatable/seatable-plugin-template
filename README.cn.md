@@ -49,7 +49,7 @@ src ------------------------------------- 项目源码文件夹
 ```
 
 info.json 说明
-   
+
 ```
 {
   "name": '',                   // 插件英文名字，只能包含字母、数字、下划线、中划线
@@ -77,7 +77,7 @@ info.json 说明
 ### 1. clone 项目
 
 * clone 当前项目到本地
-   
+  
 ### 2. 修改插件信息文件
 
 * 在 plugin-config 文件夹中添加自定义的 icon.png 作为插件的图标（可不提供，采用默认图标。icon.png 要求是 128x128 像素)
@@ -96,9 +96,9 @@ info.json 说明
 ### 3. 修改entry.js文件中的插件注册函数 
 
 ```
-  更新 window.app.registerPluginItemCallback('test', TaskList.execute);
+  更新 window.app.registerPluginItemCallback('test', TaskList.execute(props));
   ⬇️
-  为： window.app.registerPluginItemCallback(name, TaskList.execute);  此处的name 值为plugin-config/info.json中的“name”值
+  为： window.app.registerPluginItemCallback(name, TaskList.execute(props));  此处的name 值为plugin-config/info.json中的“name”值
 ```
 
 ### 4. 修改插件开发配置文件
@@ -173,7 +173,7 @@ display_name: ''
 * 此时在界面上显示出 dtable 表格所有子表的value值，及表格中协作人 (collaborators) 的详细信息（本地开发版本使用 settings 中的配置来获取 dtable 数据。集成版本直接获取当前浏览器中的 dtable 数据）。
   1. dtable 表格的中子表(tables)的相关数据，可以通过 dtable 提供的 getTables 接口函数获取
   2. dtable 表格协作人(collaborators)的详细信息，可以通过 dtable 提供的 getRelatedUsers 接口函数获取
-   
+  
 * 依据需求，使用 dtable-sdk 提供的接口函数，更新 app.js 完成插件功能开发
 
 app.js 代码结构说明

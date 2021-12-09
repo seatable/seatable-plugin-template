@@ -49,7 +49,7 @@ The plug-in package is a file in zip format. The directory structure after decom
 ```
 
 info.json description
-   
+
 ```
 {
   "name": '', // English name of plugin, can only contain letters, numbers, underscores, and underscores
@@ -76,7 +76,7 @@ In the production environment, the table data is already in the browser, so it d
 ### 1. clone project
 
 * clone current project to local
-   
+  
 ### 2. Modify the plugin information file
 
 * Add a custom icon.png as the icon of the plugin in the plugin-config folder (if it is not provided, the default icon will be used. icon.png requires 128x128 pixels)
@@ -95,9 +95,9 @@ There is no need to add other configuration parameters here, other parameters ar
 ### 3. Modify plugin registration function in entry.js file
 
 ```
-  Update window.app.registerPluginItemCallback ('test', TaskList.execute);
+  Update window.app.registerPluginItemCallback ('test', TaskList.execute(props));
   ⬇️
-  To： window.app.registerPluginItemCallback (name, TaskList.execute); where the value of name is the value of "name" in plugin-config/info.json
+  To： window.app.registerPluginItemCallback (name, TaskList.execute(props)); where the value of name is the value of "name" in plugin-config/info.json
 ```
 
 > Note, the "name" must be the save as in the info.json. Otherwise your plugin can't work.
@@ -175,7 +175,7 @@ Steps:
 * At this time, the values ​​of all subtables of the dtable and the details of collaborators in the table are displayed on the interface (the local development version uses the configuration in settings to obtain dtable data. The integrated version directly obtains the current browser DTable data).
   1. The dtable value (tables) can be obtained through the getTables interface function provided by dtable.
   2. The collaborators can be obtained through the getRelatedUsers interface function provided by dtable.
-   
+  
 * According to requirements, use the interface functions provided by dtable-sdk to update app.js to complete the plug-in function development
 
 app.js code explained
