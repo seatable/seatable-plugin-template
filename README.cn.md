@@ -187,7 +187,7 @@ import './css/plugin-layout.css';
 
 const propTypes = {
   showDialog: PropTypes.bool,
-  row: PropTypes.object, // 如果插件是通过按钮打开的，它会有一个row参数
+  row: PropTypes.object, // 如果插件是通过按钮打开的，会有一个row参数
 };
 
 class App extends React.Component {
