@@ -95,9 +95,9 @@ There is no need to add other configuration parameters here, other parameters ar
 ### 3. Modify plugin registration function in entry.js file
 
 ```
-  Update window.app.registerPluginItemCallback ('test', TaskList.execute(props));
+  Update window.app.registerPluginItemCallback ('test', TaskList.execute);
   ⬇️
-  To： window.app.registerPluginItemCallback (name, TaskList.execute(props)); where the value of name is the value of "name" in plugin-config/info.json
+  To： window.app.registerPluginItemCallback (name, TaskList.execute); where the value of name is the value of "name" in plugin-config/info.json
 ```
 
 > Note, the "name" must be the save as in the info.json. Otherwise your plugin can't work.
@@ -189,7 +189,8 @@ import DTable from 'dtable-sdk';
 import './css/plugin-layout.css';
 
 const propTypes = {
-  showDialog: PropTypes.bool
+  showDialog: PropTypes.bool,
+  row: PropTypes.object, // If the plugin is opened with a button, it will have a row parameter
 };
 
 class App extends React.Component {

@@ -96,9 +96,9 @@ info.json 说明
 ### 3. 修改entry.js文件中的插件注册函数 
 
 ```
-  更新 window.app.registerPluginItemCallback('test', TaskList.execute(props));
+  更新 window.app.registerPluginItemCallback('test', TaskList.execute);
   ⬇️
-  为： window.app.registerPluginItemCallback(name, TaskList.execute(props));  此处的name 值为plugin-config/info.json中的“name”值
+  为： window.app.registerPluginItemCallback(name, TaskList.execute);  此处的name 值为plugin-config/info.json中的“name”值
 ```
 
 ### 4. 修改插件开发配置文件
@@ -186,7 +186,8 @@ import DTable from 'dtable-sdk';
 import './css/plugin-layout.css';
 
 const propTypes = {
-  showDialog: PropTypes.bool
+  showDialog: PropTypes.bool,
+  row: PropTypes.object, // 如果插件是通过按钮打开的，会有一个row参数
 };
 
 class App extends React.Component {
