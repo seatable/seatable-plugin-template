@@ -9,7 +9,7 @@ import './assets/css/plugin-layout.css';
 
 const propTypes = {
   showDialog: PropTypes.bool,
-  row: PropTypes.object, // If the plug-in is opened with a button, it will have a row parameter
+  row: PropTypes.object, // If the plugin is opened with a button, it will have a row parameter
 };
 
 class App extends React.Component {
