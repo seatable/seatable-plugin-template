@@ -79,7 +79,6 @@ class App2 extends React.Component {
     if (isLoading || !showDialog) {
       return '';
     }
-
     let subtables = this.dtable.getTables();
     let collaborators = this.dtable.getRelatedUsers();
 
