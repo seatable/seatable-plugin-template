@@ -25,9 +25,25 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <style>
+      html, body {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+      }
+      #root {
+        height: calc(100% - 38px);
+        width: 100%;
+        display: flex;
+        overflow: hidden;
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-primary" id="plugin-controller">打开插件</button>
+    </div>
     <div id="root"></div>
     <!--
       This HTML file is a template.

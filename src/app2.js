@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import DTable from 'dtable-sdk';
 import intl from 'react-intl-universal';
-import './locale/index.js'
+import './locale/index.js';
 
-import './assets/css/plugin-layout.css';
+import './assets/css/plugin-layout-2.css';
 
 const propTypes = {
+  isDevelopment: PropTypes.bool,
   showDialog: PropTypes.bool,
   row: PropTypes.object, // If the plugin is opened with a button, it will have a row parameter
 };
 
-class App extends React.Component {
+class App2 extends React.Component {
 
   constructor(props) {
     super(props);
@@ -27,7 +27,7 @@ class App extends React.Component {
     this.initPluginDTableData();
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({showDialog: nextProps.showDialog});
   } 
 
@@ -65,23 +65,33 @@ class App extends React.Component {
   }
 
   onPluginToggle = () => {
-    this.setState({showDialog: false});
-    window.app.onClosePlugin();
+    setTimeout(() => {
+      this.setState({
+        showDialog: false,
+        isIndexPage: true,
+      });
+    }, 500);
+    window.app && window.app.onClosePlugin && window.app.onClosePlugin();
   }
 
   render() {
-    let { isLoading, showDialog } = this.state;
-    if (isLoading) {
+    const {  isLoading, showDialog } = this.state;
+    if (isLoading || !showDialog) {
       return '';
     }
 
     let subtables = this.dtable.getTables();
     let collaborators = this.dtable.getRelatedUsers();
-    
+
     return (
-      <Modal isOpen={showDialog} toggle={this.onPluginToggle} className="dtable-plugin plugin-container" size="lg">
-        <ModalHeader className="test-plugin-header" toggle={this.onPluginToggle}>{'Plugin'}</ModalHeader>
-        <ModalBody className="test-plugin-content">
+      <div className="dtable-plugin xx-plugin">
+        <div className="xx-plugin-header">
+          <div className='plugin-name'>{'Plugin'}</div>
+          <div className='plugin-close'>
+            <span onClick={this.onPluginToggle}>X</span>
+          </div>
+        </div>
+        <div className="xx-plugin-content">
           <div>{`'dtable-subtables: '${JSON.stringify(subtables)}`}</div>
           <br></br>
           <div>{`'dtable-collaborators: '${JSON.stringify(collaborators)}`}</div>
@@ -91,12 +101,12 @@ class App extends React.Component {
             <div>{intl.get('hello_someone', {name: '小强'})}</div>
             <div>{intl.getHTML('contans_html_params', {params: '参数1，参数2'})}</div>
           </div>
-        </ModalBody>
-      </Modal>
+        </div>
+      </div>
     );
   }
 }
 
-App.propTypes = propTypes;
+App2.propTypes = propTypes;
 
-export default App;
+export default App2;

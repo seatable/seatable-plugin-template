@@ -1,0 +1,5 @@
+# setting
+/src/setting.js
+
+# locale
+/src/locale/**/*.js
