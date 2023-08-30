@@ -78,7 +78,7 @@ class App extends React.Component {
 
     let subtables = this.dtable.getTables();
     let collaborators = this.dtable.getRelatedUsers();
-    
+
     return (
       <Modal isOpen={showDialog} toggle={this.onPluginToggle} className="dtable-plugin plugin-container" size="lg">
         <ModalHeader className="test-plugin-header" toggle={this.onPluginToggle}>{'Plugin'}</ModalHeader>
