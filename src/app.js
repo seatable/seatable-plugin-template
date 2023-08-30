@@ -13,7 +13,7 @@ const propTypes = {
   row: PropTypes.object, // If the plugin is opened with a button, it will have a row parameter
 };
 
-class App1 extends React.Component {
+class App extends React.Component {
 
   constructor(props) {
     super(props);
@@ -98,6 +98,6 @@ class App1 extends React.Component {
   }
 }
 
-App1.propTypes = propTypes;
+App.propTypes = propTypes;
 
-export default App1;
+export default App;

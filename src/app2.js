@@ -75,7 +75,7 @@ class App2 extends React.Component {
   }
 
   render() {
-    const {  isLoading, showDialog } = this.state;
+    const { isLoading, showDialog } = this.state;
     if (isLoading || !showDialog) {
       return '';
     }
