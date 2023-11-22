@@ -5,7 +5,6 @@
   "dependencies": {
     "dtable-sdk": "0.2.2",
     "react": "17.0.2",
-    "react-app-polyfill": "^3.0.0",
     "react-dom": "17.0.2",
     "react-intl-universal": "^2.2.2",
     "reactstrap": "8.9.0"
@@ -81,6 +80,7 @@
     "react-mentions": "4.4.7",
     "resolve": "1.15.0",
     "resolve-url-loader": "5.0.0",
+    "react-app-polyfill": "^3.0.0",
     "sass-loader": "8.0.2",
     "semver": "^6.3.1",
     "style-loader": "1.1.3",
