@@ -1,5 +1,7 @@
 # setting
 /src/setting.js
+/src/setting.local.dist.js
+/src/setting.local.js
 
 # locale
 /src/locale/**/*.js
