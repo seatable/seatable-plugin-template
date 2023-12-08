@@ -5,8 +5,7 @@ import App from './app'
 class TaskList {
 
   static execute(props = {}) {
-    let wrapper = document.querySelector('#plugin-wrapper');
-    ReactDOM.render(<App showDialog={true} {...props} />, wrapper);
+    ReactDOM.render(<App showDialog={true} {...props} />, document.querySelector('#plugin-wrapper'));
   }
 
 }

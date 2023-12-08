@@ -63,7 +63,7 @@ module.exports = function(proxy, allowedHost) {
     transportMode: 'ws',
     // Prevent a WS client from getting injected as we're already including
     // `webpackHotDevClient`.
-    injectClient: false,
+    injectClient: true,
     // It is important to tell WebpackDevServer to use the same "root" path
     // as we specified in the config. In development, we always serve from /.
     publicPath: '/',

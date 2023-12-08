@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DTable from 'dtable-sdk';
 import intl from 'react-intl-universal';
-import './locale/index.js';
+
+import './locale';
 
 import './assets/css/plugin-layout-2.css';
 
@@ -20,7 +20,6 @@ class App2 extends React.Component {
       isLoading: true,
       showDialog: props.showDialog || false,
     };
-    this.dtable = new DTable();
   }
 
   componentDidMount() {
@@ -29,7 +28,7 @@ class App2 extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({showDialog: nextProps.showDialog});
-  } 
+  }
 
   componentWillUnmount() {
     this.unsubscribeLocalDtableChanged();
@@ -40,15 +39,10 @@ class App2 extends React.Component {
     const { isDevelopment } = this.props;
     if (isDevelopment) {
       // local develop
-      await this.dtable.init(window.dtablePluginConfig);
-      await this.dtable.syncWithServer();
-      this.dtable.subscribe('dtable-connect', () => { this.onDTableConnect(); });
-    } else { 
-      // integrated to dtable app
-      this.dtable.initInBrowser(window.app.dtableStore);
+      window.dtableSDK.subscribe('dtable-connect', () => { this.onDTableConnect(); });
     }
-    this.unsubscribeLocalDtableChanged = this.dtable.subscribe('local-dtable-changed', () => { this.onDTableChanged(); });
-    this.unsubscribeRemoteDtableChanged = this.dtable.subscribe('remote-dtable-changed', () => { this.onDTableChanged(); });
+    this.unsubscribeLocalDtableChanged = window.dtableSDK.subscribe('local-dtable-changed', () => { this.onDTableChanged(); });
+    this.unsubscribeRemoteDtableChanged = window.dtableSDK.subscribe('remote-dtable-changed', () => { this.onDTableChanged(); });
     this.resetData();
   }
 
@@ -79,8 +73,9 @@ class App2 extends React.Component {
     if (isLoading || !showDialog) {
       return '';
     }
-    let subtables = this.dtable.getTables();
-    let collaborators = this.dtable.getRelatedUsers();
+
+    const { collaborators } = window.app.state;
+    const subtables = window.dtableSDK.getTables();
 
     return (
       <div className="dtable-plugin xx-plugin">
