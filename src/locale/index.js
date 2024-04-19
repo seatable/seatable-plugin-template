@@ -2,7 +2,6 @@ import intl from 'react-intl-universal';
 import de from './lang/de';
 import en from './lang/en';
 import fr from './lang/fr';
-import fr from './lang/fr';
 import es from './lang/es';
 import ru from './lang/ru';
 import pt from './lang/pt';
