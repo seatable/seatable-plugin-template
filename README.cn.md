@@ -50,7 +50,7 @@ src ------------------------------------- 项目源码文件夹
 
 info.json 说明
 
-```
+```json
 {
   "name": '',                   // 插件英文名字，只能包含字母、数字、下划线、中划线
   "version": '',                // 插件版本号，需要是类似 1.0.3 这样的格式
@@ -84,7 +84,7 @@ info.json 说明
 * 在 plugin-config 文件夹中添加自定义的 card_image.png 作为插件图标的背景图（可不提供，显示默认背景。card_image.png 要求是 560x240 像素，实际显示为 280x120 像素，这是为了在高清屏上显示不会模糊)
 * 修改 plugin-config 文件夹中 info.json 配置文件
 
-```
+```json
   "name": '',                   // 插件英文名字，只能包含字母、数字、下划线、中划线
   "version": '',                // 插件版本号
   "display_name": '',           // 插件显示的名字
@@ -107,7 +107,7 @@ info.json 说明
 
 这个配置文件用于本地开发获取 dtable 数据:
 
-```
+```js
 const config = {
   APIToken: "**",               // 需添加插件的 dtable 的 api token
   server: "**",                 // 需添加插件的 dtable 的部署网址
@@ -128,7 +128,7 @@ const config = {
 
 插件显示的名字也可以提供国际化显示。如果需要对插件的显示名字提供国际化，可以在插件配置信息文件 `info.json` 中修改display_name参数，修改类型如下：
 
-```
+```js
 display_name: {
   'en': '',
   'fr': '',
@@ -140,7 +140,7 @@ display_name: {
 
 如果不需要对插件的显示名字提供国际化，可以在插件配置信息文件 `info.json` 中直接对display_name参数进行赋值
 
-```
+```js
 display_name: ''
 ```
 
@@ -177,7 +177,8 @@ display_name: ''
 * 依据需求，使用 dtable-sdk 提供的接口函数，更新 app.js 完成插件功能开发
 
 app.js 代码结构说明
-```
+
+```js
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
@@ -276,7 +277,6 @@ class App extends React.Component {
 App.propTypes = propTypes;
 
 export default App;
-
 ```
 
 ## 打包上传插件

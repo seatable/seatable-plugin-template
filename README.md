@@ -50,7 +50,7 @@ The plug-in package is a file in zip format. The directory structure after decom
 
 info.json description
 
-```
+```json
 {
   "name": '', // English name of plugin, can only contain letters, numbers, underscores, and underscores
   "version": '', // plugin version number, need to be in a format like 1.0.3
@@ -83,7 +83,7 @@ In the production environment, the table data is already in the browser, so it d
 * Add custom card_image.png as the background image of the plugin icon in the plugin-config folder (if it is not provided, the default background is displayed. card_image.png is required to be 560x240 pixels, the actual display is 280x120 pixels.
 * Modify info.json configuration file in plugin-config folder
 
-```
+```json
   "name": '', // English name of plugin, can only contain letters, numbers, underscores, and underscores
   "version": '', // plugin version number
   "display_name": '', // name of the plugin display
@@ -108,7 +108,7 @@ You should put your local settings in `setting.local.js` by copying from the sam
 
 The configuration file is used for local development to get dtable data:
 
-```
+```js
 const config = {
   APIToken: "**", // dtable api token to be added
   server: "**", // The server URL of the dtable to which the plugin needs to be added
@@ -130,7 +130,7 @@ const config = {
 
 The name displayed by the plug-in can also provide an international display. If you need to provide internationalization for the display name of the plug-in, you can modify the display_name parameter in the plug-in configuration information file `info.json`, the modification type is as follows:
 
-```
+```js
 display_name: {
   'en': '',
   'fr': '',
@@ -142,7 +142,7 @@ display_name: {
 
 If you do not need to provide internationalization for the display name of the plug-in, you can directly assign the display_name parameter in the plug-in configuration information file `info.json`
 
-```
+```js
 display_name: ''
 ```
 
@@ -180,7 +180,7 @@ Steps:
 
 app.js code explained
 
-```
+```js
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
@@ -279,7 +279,6 @@ class App extends React.Component {
 App.propTypes = propTypes;
 
 export default App;
-
 ```
 
 ## Build zip package and upload plugin
