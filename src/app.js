@@ -77,7 +77,7 @@ class App extends React.Component {
       <Modal isOpen={showDialog} toggle={this.onPluginToggle} className="dtable-plugin plugin-container" size="lg">
         <ModalHeader className="test-plugin-header" toggle={this.onPluginToggle}>{'Plugin'}</ModalHeader>
         <ModalBody className="test-plugin-content">
-          <div>{`'dtable-subtables: '${JSON.stringify(subtables)}`}</div>
+          <div>{`'dtable-subtables-length: '${subtables.length}`}</div>
           <br></br>
           <div>{`'dtable-collaborators: '${JSON.stringify(collaborators)}`}</div>
           <div className="mt-4">

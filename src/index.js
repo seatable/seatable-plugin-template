@@ -29,7 +29,7 @@ class TaskList {
 
   static async execute() {
     await this.init();
-    ReactDOM.render(<App isDevelopment showDialog />, document.getElementById('root'));
+    ReactDOM.render(<App isDevelopment={true} showDialog={true} />, document.getElementById('root'));
   }
 
 }
