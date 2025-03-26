@@ -1,11 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from './app'
 
 class TaskList {
 
   static execute(props = {}) {
-    ReactDOM.render(<App showDialog={true} {...props} />, document.querySelector('#plugin-wrapper'));
+    const root = createRoot(document.getElementById('#plugin-wrapper'));
+    root.render(<App showDialog={true} {...props} />);
   }
 
 }
