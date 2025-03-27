@@ -5,7 +5,7 @@ import App from './app'
 class TaskList {
 
   static execute(props = {}) {
-    const root = createRoot(document.getElementById('#plugin-wrapper'));
+    const root = createRoot(document.querySelector('#plugin-wrapper'));
     root.render(<App showDialog={true} {...props} />);
   }
 
