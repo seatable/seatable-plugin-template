@@ -38,7 +38,7 @@
     "@babel/plugin-proposal-private-property-in-object": "7.21.11",
     "@babel/plugin-transform-runtime": "7.23.2",
     "@babel/runtime": "7.22.11",
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.16",
     "@svgr/webpack": "8.1.0",
     "@testing-library/jest-dom": "5.17.0",
     "@testing-library/react": "^11.1.0",
@@ -98,7 +98,7 @@
     "url-loader": "^4.1.1",
     "web-vitals": "2.1.4",
     "webpack": "^5.94.0",
-    "webpack-dev-server": "^4.6.0",
+    "webpack-dev-server": "^5.2.2",
     "webpack-manifest-plugin": "^4.0.2",
     "workbox-webpack-plugin": "^7.3.0",
     "worker-loader": "3.0.8"
